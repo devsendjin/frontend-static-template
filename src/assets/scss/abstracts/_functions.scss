@@ -1,0 +1,50 @@
+// Generates random number
+@function randomNum($min: null, $max: null) {
+  @if ($min == null) {
+    @error 'randomNum: $min not specified';
+    @return 0;
+  } @else if($max == null) {
+    @error 'randomNum: $max not specified';
+    @return 0;
+  }
+
+  $rand: random();
+  $randomNum: $min + floor($rand * (($max - $min) + 1));
+
+  @return $randomNum;
+}
+
+// Removes the unit (e.g. px, em, rem) from a value, returning the number only.
+//
+// @param {Number} $num - Number to strip unit from.
+//
+// @returns {Number} The same number, sans unit.
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+// String Replace
+//
+// @param {String} $string - String which the search will be performed in.
+// @param {String} $search - Value to search.
+// @param {String} $search - Value whitch will be replaced with.
+//
+// @returns {String} The string with replaced value.
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+// for fancybox working
+@function max($numbers...) {
+  @return m#{a}x(#{$numbers});
+}
+
+@function min($numbers...) {
+  @return m#{i}n(#{$numbers});
+}

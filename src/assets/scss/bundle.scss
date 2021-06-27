@@ -1,0 +1,18 @@
+// all abstract scss added with webpack sass-loader option
+// and are accessible inside scss files without imports
+
+// @import 'vendors/selectric';
+
+@import 'core/reset';
+@import 'core/typography';
+@import 'core/base';
+
+// @import 'components/modals';
+@import 'components/buttons';
+@import 'components/forms';
+
+@import 'sections/*';
+
+@import 'pages/*';
+
+@import 'layouts/*';

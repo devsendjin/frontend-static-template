@@ -1,0 +1,31 @@
+include ./mixins
+
+block config
+  include ./config
+
+doctype html
+html(lang='ru')
+  head
+    include ./head
+
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap')
+
+    block styles
+
+    +scripts(['lazysizes.min.js'])(async)
+    +injectWebpackAssets('css')
+
+    title Awesome | #{pageTitle}
+
+  body(class='lazyload-fade')&attributes(bodyAttributes)
+
+    block header
+      include ../sections/header
+
+    block content
+
+    block footer
+      include ../sections/footer
+
+    block scripts
+      +injectWebpackAssets('js')

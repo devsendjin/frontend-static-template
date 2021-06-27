@@ -1,0 +1,34 @@
+meta(charset='UTF-8')
+meta(name='viewport', content='width=device-width, initial-scale=1.0')
+
+//- Force IE 8/9/10 to use its latest rendering engine
+meta(http-equiv='X-UA-Compatible', content='ie=edge')
+
+//- Control the behavior of search engine crawling and indexing
+//- All Search Engines
+meta(name='robots' content='index,follow')
+//- Google Specific
+//- meta(name='googlebot' content='index,follow')
+
+
+//- Short description of the document (limit to 150 characters)
+meta(name='description' content='This is awesome pug template')
+meta(name='msapplication-TileColor' content='#da532c')
+meta(name='theme-color' content='#ffffff')
+//- Set the base URL for all relative URLs within the document
+if (siteUrl)
+  base(href=siteUrl)
+  link(rel="canonical", href=siteUrl)
+
+//- favicons
+link(rel='apple-touch-icon' sizes='180x180' href='/favicons/apple-touch-icon.png')
+link(rel='icon' type='image/png' sizes='32x32' href='/favicons/favicon-32x32.png')
+link(rel='icon' type='image/png' sizes='16x16' href='/favicons/favicon-16x16.png')
+link(rel='manifest' href='/favicons/manifest.json')
+link(rel='mask-icon' href='/favicons/safari-pinned-tab.svg' color='#5bbad5')
+
+//- Twitter Card data
+//- +twitterCardMeta(twitterCardData)
+
+//- Open Graph data
+//- +openGraphMeta(openGraphData)

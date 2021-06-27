@@ -1,0 +1,74 @@
+mixin styles(sources = [], attrs = {})
+  if (sources.length)
+    each src in sources
+      link(rel='stylesheet' href=`/css/${src}`)&attributes(attrs)
+
+mixin scripts(sources = [], attrs = {})
+  if (sources.length)
+    each src in sources
+      script(src=`/js/${src}`)&attributes(attrs)
+
+mixin space
+  | #{' '}
+
+mixin links
+  .dev-nav
+    - let links = [];
+    each link in links
+      a(href= '/' + link + '.html')= link
+    span= links.length
+
+-
+  const randomImageUrl = function (width = 800, height = 400, id) {
+    let idx = id || Math.floor(Math.random() * (20));
+    return 'https://picsum.photos/' + width + '/' + height + '?random=1' + idx;
+  }
+
+- const randomItemFromArray = arr => arr[Math.floor(Math.random() * arr.length)]
+
+- const  randomMinMax = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
+
+- const  randomFromMinus1ToPlus1 = () => ((Math.random() - 0.5) * 2).toFixed(2)
+
+mixin testBlock
+  style.
+    .test-block {
+      width: 100%;
+      height: 100%;
+      border: 1px solid #000;
+      background-color: rgba(210, 210, 210, 0.97);
+    }
+
+  div.test-block
+    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam, aut distinctio dolores earum explicabo ipsa magnam maxime nam nihil officiis pariatur porro quaerat rem reprehenderit vero voluptatem. Alias commodi debitis distinctio eligendi error, id ipsam iste labore magni necessitatibus tempora vero. Aut autem dicta enim, eos ex incidunt iure maxime necessitatibus ratione, sed tempore vitae voluptatibus. Assumenda at atque delectus, dignissimos distinctio doloremque doloribus dolorum est eum excepturi exercitationem fugiat harum, illo ipsum nostrum officia quam repudiandae tempore! Amet autem, cum dolorem eius iusto magni neque placeat quaerat. Accusamus aut autem distinctio maxime nesciunt odio officia quisquam repellendus similique?
+
+mixin video
+  -
+    const sources = [
+      'https://www.youtube.com/embed/YE7VzlLtp-4',
+      'http://storage.googleapis.com/media-session/caminandes/short.mp4',
+    ]
+  //- autoplay
+  iframe(width='560', height='315', src=randomItemFromArray(sources), frameborder='0', allow='accelerometer; encrypted-media; gyroscope; picture-in-picture', allowfullscreen='')
+
+mixin debugToHtml(data)
+  if (!data)
+    style.
+      .debug-error {
+        font-size: 18px;
+        color: #f00;
+      }
+    div.debug-error Provided debug data is incorrect
+  if (data)
+    pre
+      #{JSON.stringify(data, null, 2)}
+
+//- type = 'css' | 'js'
+mixin injectWebpackAssets(type)
+  if (htmlWebpackPlugin && type)
+    if (htmlWebpackPlugin.files[type].length !== 0)
+      each path in htmlWebpackPlugin.files[type]
+        if (type === 'css')
+          link(rel='stylesheet' href=path)
+        if (type === 'js')
+          script(src=path)

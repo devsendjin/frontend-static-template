@@ -1,0 +1,51 @@
+$default-ui-common-fonts:
+  "Apple Color Emoji", // macOS emoji
+  "Segoe UI Emoji", // Windows emoji
+  "Segoe UI Symbol", // Windows emoji
+  "Noto Color Emoji"; // Linux emoji
+
+$default-ui-monospaced-fonts:
+  "Menlo", // macOS 10.10+
+  "Fira Code",
+  "Cascadia Code",
+  "Consolas", // Windows 6+
+  "Inconsolata",
+  "Monaco",
+  "Roboto Mono", // Android 4+
+  "Droid Sans Mono",
+  "Ubuntu Mono",
+  "Ubuntu Monospace", // Ubuntu 10.10+
+  "Source Code Pro",
+  "Noto Mono", // KDE Plasma 5+
+  "Oxygen Mono", // KDE Plasma 4+
+  "Liberation Mono", // Linux/OpenOffice fallback
+  "DejaVu Sans Mono",
+  "Bitstream Vera Sans Mono",
+  monospace, // fallback
+  $default-ui-common-fonts;
+
+$default-ui-system-fonts:
+  system-ui,
+  -apple-system, // macOS 10.11-10.12
+  "Segoe UI", // Windows 6+
+  "Roboto", // Android 4+
+  "Ubuntu", // Ubuntu 10.10+
+  "Cantarell", // Gnome 3+
+  "Noto Sans", // KDE Plasma 5+
+  sans-serif, // fallback
+  $default-ui-common-fonts;
+
+$primary-font: "Montserrat", $default-ui-system-fonts;
+
+$default-font-size: 16px;
+
+// colors
+$black: #000;
+
+// variables for grid mixins
+$columns: 12 !default;
+$gutter: 40px !default;
+$offset: 15px !default;
+
+// other
+$trs: 0.2s !default; // default transition
